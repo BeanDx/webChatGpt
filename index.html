@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- icons for change theme -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- jet brains mono font -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <!-- font for title -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>ChatGPT - by BeanD</title>
+</head>
+
+<body>
+    <!-- header block -->
+    <header class="header">
+        <div class="header header__container">
+            <a href="./index.html" class="logo">
+                <img src="./img/header/logo.png" alt="logo">
+                <span class="header__logo-text">ChatGPT</span>
+            </a>
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__item">
+                        <a href="./about.html">Про проект</a>
+                    </li>
+                </ul>
+            </nav>
+            <a class="themetoggle" href="#">
+                <span class="material-icons">wb_sunny</span>
+            </a>
+        </div>
+    </header>
+    <main class="main">
+        <section class="base">
+            <div class="base__container">
+                <div class="base__title">
+                    Enter your request below:
+                </div>
+                <div class="base__request">
+                    <textarea spellcheck="false" name="request" id="base__area" cols="33" rows="5"
+                        class="base__area"></textarea>
+                </div>
+                <div class="base__button-send-request">
+                    <button class="base__send-request" type="button">
+                        Отправить запрос!
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="answer">
+            <div class="answer__container">
+                <div class="answer__title">
+                    Anwer ChatGPT:
+                </div>
+                <div class="answer__answer"></div>
+            </div>
+        </section>
+    </main>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
