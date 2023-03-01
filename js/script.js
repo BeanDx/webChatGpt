@@ -24,78 +24,104 @@ function addDarkClassHTML() {
     } catch (err) { }
 }
 addDarkClassHTML();
-// ========================
-// просто выводит текст
-// let btnSendRequest = document.querySelector('.base__send-request'); // кнопка отправки запроса
-
-// btnSendRequest.addEventListener('click', () => { // событие клика
-//     let textArea = document.querySelector('.base__area'), // получение поля для ввода текста
-//     answer = document.querySelector('.answer__answer'); // получение дива для вывода информации
-
-//     answer.innerHTML = textArea.value; // добавление текста в див
-// })
-// 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
-// ========================
-// работает только отвечает бредом
-// получаем кнопку и textarea
+// ======================== 
+// request to chatgpt
 // const sendButton = document.querySelector('.base__send-request');
 // const textArea = document.querySelector('.base__area');
-// // получаем div для вывода ответа
 // const answerDiv = document.querySelector('.answer__answer');
 
-// // добавляем обработчик события на кнопку
 // sendButton.addEventListener('click', async () => {
-//   // получаем текст из textarea
-//   const text = textArea.value;
-//   // делаем запрос на ChatGPT API
-//   const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': 'Bearer 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' // замените YOUR_API_TOKEN на ваш API-токен
-//     },
-//     body: JSON.stringify({
-//       prompt: text,
-//       max_tokens: 200,
-//       n: 1,
-//       stop: ['\n']
-//     })
-//   });
-//   // парсим ответ в формате JSON
-//   const data = await response.json();
-//   // выводим ответ в div
-//   answerDiv.innerText = data.choices[0].text;
+//     sendButton.disabled = true;
+//     sendButton.style.cursor = 'not-allowed';
+//     let countdown = 20;
+//     const countdownInterval = setInterval(() => {
+//         sendButton.textContent = `Отправить (${countdown}s)`;
+//         countdown--;
+//         if (countdown < 0) {
+//             clearInterval(countdownInterval);
+//             sendButton.disabled = false;
+//             sendButton.style.cursor = 'pointer';
+//             sendButton.textContent = 'Отправить';
+//         }
+//     }, 1000);
+//     try {
+//         const text = textArea.value;
+//         const response = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions?model=text-davinci-003', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': 'Bearer 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' // замените YOUR_API_TOKEN на ваш API-токен
+//             },
+//             body: JSON.stringify({
+//                 prompt: text,
+//                 max_tokens: 2000,
+//                 n: 5,
+//                 top_p: 1.0,
+//                 frequency_penalty: 0.0,
+//                 presence_penalty: 0.6,
+//                 stop: ['You']
+//             })
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(`Ошибка HTTP: ${response.status}`);
+//         }
+
+//         const data = await response.json();
+//         console.log(data);
+//         answerDiv.innerText = data.choices[0].text;
+//     } catch (error) {
+//         console.error(`Ошибка: ${error.message}`);
+//     }
 // });
-// ==================================
-// точно рабочий
-// получаем кнопку и textarea
+
+// ======================== 
+// експеременталка
 const sendButton = document.querySelector('.base__send-request');
 const textArea = document.querySelector('.base__area');
-// получаем div для вывода ответа
 const answerDiv = document.querySelector('.answer__answer');
 
-// добавляем обработчик события на кнопку
 sendButton.addEventListener('click', async () => {
-  // получаем текст из textarea
-  const text = textArea.value;
-  // делаем запрос на GPT-2 API
-  const response = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions?model=text-davinci-003', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer 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' // замените YOUR_API_TOKEN на ваш API-токен
-    },
-    body: JSON.stringify({
-      prompt: text,
-      max_tokens: 100,
-      n: 1,
-      stop: ['\n']
-    })
-  });
-  // парсим ответ в формате JSON
-  const data = await response.json();
-  // выводим ответ в div
-  console.log(data);
-  answerDiv.innerHTML = data.choices[0].text;
-//   answerDiv.innerText = data.choices[0].text;
+    sendButton.disabled = true;
+    sendButton.style.cursor = 'not-allowed';
+    let countdown = 20;
+    const countdownInterval = setInterval(() => {
+        sendButton.textContent = `Отправить (${countdown}s)`;
+        countdown--;
+        if (countdown < 0) {
+            clearInterval(countdownInterval);
+            sendButton.disabled = false;
+            sendButton.style.cursor = 'pointer';
+            sendButton.textContent = 'Отправить';
+        }
+    }, 1000);
+    try {
+        const text = textArea.value;
+        const response = await fetch('https://api.openai.com/v1/engines/text-davinci-003/completions?model=text-davinci-003', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer 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' // замените YOUR_API_TOKEN на ваш API-токен
+            },
+            body: JSON.stringify({
+                prompt: text,
+                max_tokens: 2000,
+                n: 5,
+                top_p: 1.0,
+                frequency_penalty: 0.0,
+                presence_penalty: 0.6,
+                stop: ['You']
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Ошибка HTTP: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data);
+        answerDiv.innerText = data.choices[0].text;
+    } catch (error) {
+        console.error(`Ошибка: ${error.message}`);
+    }
 });

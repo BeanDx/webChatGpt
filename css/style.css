@@ -261,6 +261,7 @@ main {
 .answer__answer {
     display: flex;
     margin-top: 20px;
+    font-size: 18px;
     font-family: "JetBrains Mono";
     color: #f5f2f2;
 }
